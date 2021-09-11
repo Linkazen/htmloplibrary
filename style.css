@@ -1,0 +1,12 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: greenyellow;
+    border-bottom: solid black;
+}
