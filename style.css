@@ -1,6 +1,7 @@
 html, body {
     padding: 0px;
     margin: 0px;
+    background-color: rgb(160, 85, 85);
 }
 
 
@@ -49,4 +50,5 @@ html, body {
     border: solid 1px black;
     border-radius: 50%;
 }
+
 
