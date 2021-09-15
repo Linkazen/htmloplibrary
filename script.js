@@ -28,5 +28,5 @@ function addBookCard() {
 }
 
 bookbutton.addEventListener("click", function(){
-    promptBox.style.display = "flex"
+    promptBox.style.display = "block"
 })

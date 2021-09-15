@@ -66,8 +66,9 @@ html, body {
     z-index: 1;
     height: 70%;
     width: 30%;
-    justify-content: center;
-    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     overflow: auto;
     background-color: pink;
 }
