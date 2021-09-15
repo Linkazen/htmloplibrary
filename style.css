@@ -12,7 +12,6 @@ html, body {
     background-color: greenyellow;
     border-bottom: solid black;
     height: 70px;
-
 }
 
 .botbar {
@@ -28,12 +27,22 @@ html, body {
 
 }
 
+.items {
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+}
+
 .addbook {
     height: 30px;
     width: 120px;
     background-color: chocolate;
     border: solid 2px black;
     border-radius: 25px;
+}
+
+.addbook:hover {
+    border-color: pink;
 }
 
 .addbook:active {
@@ -51,4 +60,26 @@ html, body {
     border-radius: 50%;
 }
 
+.promptArea {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    height: 70%;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: pink;
+}
 
+.prompt {
+
+}
+
+.confirmBtn {
+
+}
+
+.cancelBtn {
+
+}

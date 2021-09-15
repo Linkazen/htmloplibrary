@@ -7,13 +7,29 @@
     <title>Your Library</title>
 </head>
 <body>
-    <div class="topbar">
-        <h2 class="corneritems">Library</h2>
-        <button class="addbook">Add Book</button>
-        <a href="https://github.com/Linkazen" class="corneritems"><img class="gitimg" src="https://avatars.githubusercontent.com/u/82543388?v=4" alt=""></a>
+    <div class="promptArea">
+        <div class="prompt">
+            <label for="author">Author:</label>
+            <input type="text" id="author">
+            <label for="title">Title:</label>
+            <input type="text" id="title">
+            <label for="length">Length of Book:</label>
+            <input type="text" id="length">
+            <label for="read">Have you read this?</label>
+            <input type="checkbox">
+            <span class="cancelBtn"></span>
+            <span class="confirmBtn"></span>
+        </div>
     </div>
+
+    <div class="topbar">
+        <h2 id="topLeft" class="corneritems items">Library</h2>
+        <button class="addbook">Add Book</button>
+        <a href="https://github.com/Linkazen" id="topRight" class="corneritems items"><img class="gitimg" src="https://avatars.githubusercontent.com/u/82543388?v=4" alt=""></a>
+    </div>
+
     <div class="booksarea">
-        placeholder
+        <div class=""></div>
     </div>
     <div class="botbar">
         <p>Total Books:0</p>
