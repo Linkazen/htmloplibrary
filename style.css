@@ -64,17 +64,25 @@ html, body {
     display: none;
     position: fixed;
     z-index: 1;
-    height: 70%;
-    width: 30%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 0;    
+    top: 0;
+    height: 100%;
+    width: 100%;
     overflow: auto;
-    background-color: pink;
+    flex-direction: column;
+    background-color: rgb(255, 192, 203);
+    background-color: rgba(255, 192, 203, 0.8);
 }
 
 .prompt {
-
+    display: flex;
+    margin: auto;
+    padding: 20px;
+    background-color: pink;
+    border: 1px solid #888;
+    flex-direction: column;
+    width: 30%;
+    height: 60%;
 }
 
 .confirmBtn {
@@ -83,4 +91,13 @@ html, body {
 
 .cancelBtn {
 
+}
+
+.bookCards {
+
+}
+
+.textbox {
+    width: 200px;
+    margin-bottom: 20px;
 }
