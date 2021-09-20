@@ -9,17 +9,17 @@
 <body>
     <div class="promptArea">
         <div class="prompt">
-            <form action="">
+            <form action="" id="promptForm">
                 <label for="author">Author:</label>
                 <input type="text" id="author" class="textbox" name="author">
                 <label for="title">Title:</label>
                 <input type="text" id="title" class="textbox" name="title">
-                <label for="length">Length of Book:</label>
-                <input type="text" id="length" class="textbox" name="length">
+                <label for="bookLength">Length of Book:</label>
+                <input type="text" id="bookLength" class="textbox" name="bookLength">
                 <label for="read">Have you read this?</label>
                 <input type="checkbox" class="textbox" id="read" name="read">
-                <button id="confirmBtn">Save</button>
-                <button id="cancelBtn">Cancel</button>
+                <button type="button" id="confirmBtn">Confirm</button>
+                <button type="button" id="cancelBtn">Cancel</button>
             </form>        
         </div>
     </div>
@@ -31,12 +31,9 @@
     </div>
 
     <div class="booksarea">
-        <div class=".bookCards"></div>
-        <div class=".bookCards"></div>
-        <div class=".bookCards"></div>
-        <div class=".bookCards"></div>
-        <div class=".bookCards"></div>
+        <div></div>
     </div>
+
     <div class="botbar">
         <p>Total Books:0</p>
         <p>Total Pages:0</p>

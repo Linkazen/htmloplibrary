@@ -14,21 +14,23 @@ function book(title, author, length, read) {
 }
 
 function addBookToLibrary() {
-    let title = document.querySelector("#title").value;
-    let author = document.querySelector("#author").value;
-    let length = document.querySelector("#length").value;
-    let read = document.querySelector("#read").checked;
-    read = read ? "yes" : "no";
-    let addedBook = new book(title, author, length, read);
+    let bookInfo = []
+    for(let i = 0; i < (form.length - 2); i++) {
+        bookInfo.push(form[i].value)
+    }
+    let addedBook = new book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3]);
     myLibrary.push(addedBook);
-    console.log(myLibrary)
+    return
 }
 
 function addBookCard() {
-    let book = document.createElement("div");
-    book.className = "books"
-
-    booksarea.appendChild(books);
+    booksarea.innerHTML = "";
+    for (let i = 0; i < myLibrary.length; i++) {
+        let book = document.createElement("div");
+        book.className = "books"
+        book.innerText = "testing"
+        booksarea.appendChild(book);
+    }
 }
 
 bookbutton.addEventListener("click", function(){
@@ -37,11 +39,10 @@ bookbutton.addEventListener("click", function(){
 
 confirmBtn.addEventListener("click", function(){
     addBookToLibrary()
+    addBookCard()
     promptBox.style.display = "none"
-    form.reset();
-})
+},)
 
 cancelBtn.addEventListener("click", function(){
     promptBox.style.display = "none"
-    form.reset()
 })
