@@ -17,7 +17,12 @@
                 <label for="bookLength">Length of Book:</label>
                 <input type="text" id="bookLength" class="textbox" name="bookLength">
                 <label for="read">Have you read this?</label>
-                <input type="checkbox" class="textbox" id="read" name="read">
+                <select name="read" id="">
+                    <option value="Currently Reading">Currently Reading</option>
+                    <option value="Plan to Read">Plan to Read</option>
+                    <option value="Read">Read</option>
+                    <option value="Dropped">Dropped</option>
+                </select>
                 <button type="button" id="confirmBtn">Confirm</button>
                 <button type="button" id="cancelBtn">Cancel</button>
             </form>        
