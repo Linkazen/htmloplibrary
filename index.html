@@ -9,16 +9,18 @@
 <body>
     <div class="promptArea">
         <div class="prompt">
-            <label for="author">Author:</label>
-            <input type="text" id="author" class="textbox">
-            <label for="title">Title:</label>
-            <input type="text" id="title" class="textbox">
-            <label for="length">Length of Book:</label>
-            <input type="text" id="length" class="textbox">
-            <label for="read">Have you read this?</label>
-            <input type="checkbox" class="textbox">
-            <span class="cancelBtn"></span>
-            <span class="confirmBtn"></span>
+            <form action="">
+                <label for="author">Author:</label>
+                <input type="text" id="author" class="textbox" name="author">
+                <label for="title">Title:</label>
+                <input type="text" id="title" class="textbox" name="title">
+                <label for="length">Length of Book:</label>
+                <input type="text" id="length" class="textbox" name="length">
+                <label for="read">Have you read this?</label>
+                <input type="checkbox" class="textbox" id="read" name="read">
+                <button id="confirmBtn">Save</button>
+                <button id="cancelBtn">Cancel</button>
+            </form>        
         </div>
     </div>
 

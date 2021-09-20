@@ -85,12 +85,13 @@ html, body {
     height: 60%;
 }
 
-.confirmBtn {
-
+#confirmBtn {
+    width: 80px;
+    margin-bottom: 10px;
 }
 
-.cancelBtn {
-
+#cancelBtn {
+    width: 80px;
 }
 
 .bookCards {
