@@ -31,7 +31,6 @@ function formValidation() {
     } else if (isNaN(parseInt(form.bookLength.value)) == true) {
         return false
     }
-    console.log(parseInt(form.bookLength.value))
     return true
 }
 
@@ -51,6 +50,11 @@ function addBookCard() {
         read.innerText = myLibrary[i].read
         readSelect.innerText = "Change read status"
         delBtn.innerText = "Delete"
+        readSelect.classList.add("readbtns")
+        delBtn.classList.add("delbtns")
+        readSelect.setAttribute(`id`, `readbtns${i}`)
+        delBtn.setAttribute(`id`, `delbtn${i}`)
+        book.setAttribute(`id`, `book${i}`)
         book.appendChild(title)
         book.appendChild(author)
         book.appendChild(length)
@@ -58,6 +62,23 @@ function addBookCard() {
         book.appendChild(readSelect)
         book.appendChild(delBtn)
         booksarea.appendChild(book);
+    }
+    let delBookBtns = document.querySelectorAll(".delbtns")
+    let selectReadBtns = document.querySelectorAll(".readbtns")
+
+    for(let i = 0; i < delBookBtns.length; i++) {
+        delBookBtns[i].addEventListener("click", function(){
+            let number = this.id.slice(-1)
+            let child = document.querySelector(`#book${number}`)
+            myLibrary.splice(number, 1)
+            booksarea.removeChild(child)
+            console.log(myLibrary)
+            
+        })
+
+        selectReadBtns[i].addEventListener("click", function(){
+
+        })
     }
 }
 
