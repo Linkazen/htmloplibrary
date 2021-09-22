@@ -18,18 +18,20 @@ function addBookToLibrary() {
     for(let i = 0; i < (form.length - 2); i++) {
         bookInfo.push(form[i].value)
     }
-    console.log(bookInfo[3])
     let addedBook = new book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3]);
     myLibrary.push(addedBook);
     return
 }
 
 function formValidation() {
-    if (form.author.value == "" || form.title.value == "" || form.bookLength.value == "" || form.read.value == "") {
+    if (form.author.value == "" || form.title.value == "" || form.bookLength.value == "") {
         return false
-        console.log("bruh")
+    } else if (form.author.value.length >= 50 || form.title.value.length >= 100 || form.bookLength.value.length >= 6) {
+        return false
+    } else if (isNaN(parseInt(form.bookLength.value)) == true) {
+        return false
     }
-    console.log("bruh")
+    console.log(parseInt(form.bookLength.value))
     return true
 }
 
@@ -41,14 +43,20 @@ function addBookCard() {
         let author = document.createElement("p")
         let length = document.createElement("p")
         let read = document.createElement("p")
+        let readSelect = document.createElement("button")
+        let delBtn = document.createElement("button")
         title.innerText = myLibrary[i].title
         author.innerText = myLibrary[i].author
         length.innerText = myLibrary[i].length
         read.innerText = myLibrary[i].read
+        readSelect.innerText = "Change read status"
+        delBtn.innerText = "Delete"
         book.appendChild(title)
         book.appendChild(author)
         book.appendChild(length)
         book.appendChild(read)
+        book.appendChild(readSelect)
+        book.appendChild(delBtn)
         booksarea.appendChild(book);
     }
 }
