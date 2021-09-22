@@ -24,6 +24,15 @@ function addBookToLibrary() {
     return
 }
 
+function formValidation() {
+    if (form.author.value == "" || form.title.value == "" || form.bookLength.value == "" || form.read.value == "") {
+        return false
+        console.log("bruh")
+    }
+    console.log("bruh")
+    return true
+}
+
 function addBookCard() {
     booksarea.innerHTML = "";
     for (let i = 0; i < myLibrary.length; i++) {
@@ -49,6 +58,10 @@ bookbutton.addEventListener("click", function(){
 })
 
 confirmBtn.addEventListener("click", function(){
+    let check = formValidation()
+    if (check == false) {
+        return
+    }
     addBookToLibrary()
     addBookCard()
     promptBox.style.display = "none"
