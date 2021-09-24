@@ -5,6 +5,8 @@ let promptBox = document.querySelector(".promptArea")
 let confirmBtn = document.querySelector("#confirmBtn")
 let cancelBtn = document.querySelector("#cancelBtn")
 let form = document.querySelector("#promptForm")
+let delBookBtns = document.querySelectorAll(".delbtns")
+let selectReadBtns = document.querySelectorAll(".readbtns")
 
 function book(title, author, length, read) {
     this.title = title
@@ -33,6 +35,7 @@ function formValidation() {
     }
     return true
 }
+
 
 function addBookCard() {
     booksarea.innerHTML = "";
@@ -63,18 +66,41 @@ function addBookCard() {
         book.appendChild(delBtn)
         booksarea.appendChild(book);
     }
-    let delBookBtns = document.querySelectorAll(".delbtns")
-    let selectReadBtns = document.querySelectorAll(".readbtns")
+}
+
+function eventListenerFunc() {
+    let number = this.id.slice(-1)
+    let child = document.getElementById(`book${number}`)
+    let libraryLength = myLibrary.length
+    myLibrary.splice(number, 1)
+    booksarea.removeChild(child)
+    delBookBtns = document.querySelectorAll(".delbtns")
+    replaceExistIds(number, libraryLength)
+    console.log(myLibrary)
+}
+
+//replaces all Id's with updated ones after deleting
+function replaceExistIds(slicedNumber, arraySize) {
+    for (let i = slicedNumber; i < arraySize; i++) {
+        let book = document.querySelector(`#book${i}`)
+        if (book == null) {
+            continue;
+        }
+        book.setAttribute(`id`, `book${i - 1}`)
+    }
+    
+    addBookCard()
+    delReadEventListener()
+}
+
+
+
+function delReadEventListener() {
+    delBookBtns = document.querySelectorAll(".delbtns")
+    selectReadBtns = document.querySelectorAll(".readbtns")
 
     for(let i = 0; i < delBookBtns.length; i++) {
-        delBookBtns[i].addEventListener("click", function(){
-            let number = this.id.slice(-1)
-            let child = document.querySelector(`#book${number}`)
-            myLibrary.splice(number, 1)
-            booksarea.removeChild(child)
-            console.log(myLibrary)
-            
-        })
+        delBookBtns[i].addEventListener("click", eventListenerFunc)
 
         selectReadBtns[i].addEventListener("click", function(){
 
@@ -86,6 +112,7 @@ bookbutton.addEventListener("click", function(){
     promptBox.style.display = "flex"
 })
 
+
 confirmBtn.addEventListener("click", function(){
     let check = formValidation()
     if (check == false) {
@@ -93,7 +120,9 @@ confirmBtn.addEventListener("click", function(){
     }
     addBookToLibrary()
     addBookCard()
+    delReadEventListener()
     promptBox.style.display = "none"
+    console.log(myLibrary)
     form.reset()
 })
 
