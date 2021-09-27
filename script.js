@@ -37,32 +37,79 @@ function formValidation() {
     return true
 }
 
+function changeReadStatus(readSelect) {
+
+}
+
 // destroys then builds the entire book library into the DOM
 function addBookCard() {
     booksarea.innerHTML = "";
-    for (let i = 0; i < myLibrary.length; i++) {
+    let totalPages = 0
+    for (let i = 0; i < myLibrary.length; i++) { 
         let book = document.createElement("div");
         let title = document.createElement("p")
         let author = document.createElement("p")
         let length = document.createElement("p")
-        let read = document.createElement("p")
-        let readSelect = document.createElement("button")
+        let readLabel = document.createElement("label")
+        let readSelect = document.createElement("select")
+
+        let readSelectCS = document.createElement("option")
+        readSelectCS.innerText = "Currently Reading"
+
+        let readSelectPtR = document.createElement("option")
+        readSelectPtR.innerText = "Plan to Read"
+
+        let readSelectR = document.createElement("option")
+        readSelectR.innerText = "Read"
+        
+        let readSelectD = document.createElement("option")
+        readSelectD.innerText = "Dropped"
+
+        switch (myLibrary[i].read) {
+            case "Currently Reading":
+                readSelectCS.setAttribute(`selected`, `selected`);
+                break;
+            case "Plan to Read":
+                readSelectPtR.setAttribute(`selected`, `selected`);
+                break;
+            case "Read":
+                readSelectR.setAttribute(`selected`, `selected`);
+                break;
+            case "Dropped":
+                readSelectD.setAttribute(`selected`, `selected`);
+                break;
+        }
+        
         let delBtn = document.createElement("button")
-        title.innerText = myLibrary[i].title
-        author.innerText = myLibrary[i].author
-        length.innerText = myLibrary[i].length
-        read.innerText = myLibrary[i].read
-        readSelect.innerText = "Change read status"
+        let barPages = document.querySelector(".totPages")
+
+        totalPages += parseInt(myLibrary[i].length)
+
+        barPages.innerText = `${totalPages}`
+        title.innerText = `Title: ${myLibrary[i].title}`
+        author.innerText = `Author: ${myLibrary[i].author}`
+        length.innerText = `Length: ${myLibrary[i].length}`
         delBtn.innerText = "Delete"
+        
         readSelect.classList.add("readbtns")
         delBtn.classList.add("delbtns")
+        
+        readSelect.setAttribute(`name`, `readSelect`)
+        readLabel.setAttribute(`for`, `readSelect`)
         readSelect.setAttribute(`id`, `readbtns${i}`)
         delBtn.setAttribute(`id`, `delbtn${i}`)
         book.setAttribute(`id`, `book${i}`)
+        book.setAttribute(`class`, `book`)
+
+        readSelect.appendChild(readSelectCS)
+        readSelect.appendChild(readSelectPtR)
+        readSelect.appendChild(readSelectR)
+        readSelect.appendChild(readSelectD)
+
         book.appendChild(title)
         book.appendChild(author)
         book.appendChild(length)
-        book.appendChild(read)
+        book.appendChild(readLabel)
         book.appendChild(readSelect)
         book.appendChild(delBtn)
         booksarea.appendChild(book);
@@ -84,7 +131,6 @@ function eventListenerFunc() {
 function numberOfBooks() {
     let booksNumber = document.querySelector(".booksarea").childElementCount
     let numberPlace = document.querySelector(".booksNumber")
-    console.log(booksNumber)
     numberPlace.innerText = `${booksNumber}`
 }
 
@@ -126,7 +172,6 @@ confirmBtn.addEventListener("click", function(){
     addBookCard()
     delReadEventListener()
     promptBox.style.display = "none"
-    console.log(myLibrary)
     form.reset()
 })
 
