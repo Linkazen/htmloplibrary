@@ -1,4 +1,4 @@
-let myLibrary = [];
+let myLibrary = JSON.parse(localStorage.getItem("Library") || "[]")
 let booksarea = document.querySelector(".booksarea")
 let bookbutton = document.querySelector(".addbook")
 let promptBox = document.querySelector(".promptArea")
@@ -37,8 +37,11 @@ function formValidation() {
     return true
 }
 
-function changeReadStatus(readSelect) {
-
+function changeReadStatusLib() {
+    let select = this.parentNode
+    let selParentId = select.parentNode.id.slice(-1)
+    myLibrary[selParentId].read = this.innerText
+    localStorageSave()
 }
 
 // destroys then builds the entire book library into the DOM
@@ -55,15 +58,21 @@ function addBookCard() {
 
         let readSelectCS = document.createElement("option")
         readSelectCS.innerText = "Currently Reading"
+        readSelectCS.addEventListener("click", changeReadStatusLib)
 
         let readSelectPtR = document.createElement("option")
         readSelectPtR.innerText = "Plan to Read"
+        readSelectPtR.addEventListener("click", changeReadStatusLib)
 
         let readSelectR = document.createElement("option")
         readSelectR.innerText = "Read"
+        readSelectR.addEventListener("click", changeReadStatusLib)
         
         let readSelectD = document.createElement("option")
         readSelectD.innerText = "Dropped"
+        readSelectD.addEventListener("click", changeReadStatusLib)
+
+        
 
         switch (myLibrary[i].read) {
             case "Currently Reading":
@@ -115,6 +124,11 @@ function addBookCard() {
         booksarea.appendChild(book);
     }
     numberOfBooks()
+    
+}
+
+function localStorageSave() {
+    localStorage.setItem('Library', JSON.stringify(myLibrary))
 }
 
 // function that is called when the delete button is pressed on a book
@@ -126,6 +140,7 @@ function eventListenerFunc() {
     booksarea.removeChild(child)
     replaceExistIds(number, libraryLength)
     numberOfBooks()
+    localStorageSave()
 }
 
 function numberOfBooks() {
@@ -154,8 +169,6 @@ function delReadEventListener() {
 
     for(let i = 0; i < delBookBtns.length; i++) {
         delBookBtns[i].addEventListener("click", eventListenerFunc)
-
-        //selectReadBtns[i].addEventListener("click", )
     }
 }
 
@@ -173,9 +186,13 @@ confirmBtn.addEventListener("click", function(){
     delReadEventListener()
     promptBox.style.display = "none"
     form.reset()
+    localStorageSave()
 })
 
 cancelBtn.addEventListener("click", function(){
     promptBox.style.display = "none"
     form.reset()
 })
+
+addBookCard()
+delReadEventListener()
