@@ -25,6 +25,7 @@ function addBookToLibrary() {
     return
 }
 
+// makes sure that the form has been filled with valid information
 function formValidation() {
     if (form.author.value == "" || form.title.value == "" || form.bookLength.value == "") {
         return false
@@ -36,7 +37,7 @@ function formValidation() {
     return true
 }
 
-
+// destroys then builds the entire book library into the DOM
 function addBookCard() {
     booksarea.innerHTML = "";
     for (let i = 0; i < myLibrary.length; i++) {
@@ -66,17 +67,25 @@ function addBookCard() {
         book.appendChild(delBtn)
         booksarea.appendChild(book);
     }
+    numberOfBooks()
 }
 
+// function that is called when the delete button is pressed on a book
 function eventListenerFunc() {
     let number = this.id.slice(-1)
     let child = document.getElementById(`book${number}`)
     let libraryLength = myLibrary.length
     myLibrary.splice(number, 1)
     booksarea.removeChild(child)
-    delBookBtns = document.querySelectorAll(".delbtns")
     replaceExistIds(number, libraryLength)
-    console.log(myLibrary)
+    numberOfBooks()
+}
+
+function numberOfBooks() {
+    let booksNumber = document.querySelector(".booksarea").childElementCount
+    let numberPlace = document.querySelector(".booksNumber")
+    console.log(booksNumber)
+    numberPlace.innerText = `${booksNumber}`
 }
 
 //replaces all Id's with updated ones after deleting
@@ -93,8 +102,6 @@ function replaceExistIds(slicedNumber, arraySize) {
     delReadEventListener()
 }
 
-
-
 function delReadEventListener() {
     delBookBtns = document.querySelectorAll(".delbtns")
     selectReadBtns = document.querySelectorAll(".readbtns")
@@ -102,16 +109,13 @@ function delReadEventListener() {
     for(let i = 0; i < delBookBtns.length; i++) {
         delBookBtns[i].addEventListener("click", eventListenerFunc)
 
-        selectReadBtns[i].addEventListener("click", function(){
-
-        })
+        //selectReadBtns[i].addEventListener("click", )
     }
 }
 
 bookbutton.addEventListener("click", function(){
     promptBox.style.display = "flex"
 })
-
 
 confirmBtn.addEventListener("click", function(){
     let check = formValidation()
