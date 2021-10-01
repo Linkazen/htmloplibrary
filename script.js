@@ -7,8 +7,9 @@ let cancelBtn = document.querySelector("#cancelBtn")
 let form = document.querySelector("#promptForm")
 let delBookBtns = document.querySelectorAll(".delbtns")
 let selectReadBtns = document.querySelectorAll(".readbtns")
+let error = document.querySelector("#error")
 
-function book(title, author, length, read) {
+function book(author, title, length, read) {
     this.title = title
     this.author = author
     this.length = length
@@ -28,10 +29,19 @@ function addBookToLibrary() {
 // makes sure that the form has been filled with valid information
 function formValidation() {
     if (form.author.value == "" || form.title.value == "" || form.bookLength.value == "") {
+        error.innerText = "Please fill out everything" 
         return false
-    } else if (form.author.value.length >= 50 || form.title.value.length >= 100 || form.bookLength.value.length >= 6) {
+    } else if (form.author.value.length >= 50 || form.title.value.length >= 100 || form.bookLength.value.length >= 10) {
+        if (form.author.value.length >= 50) {
+            error.innerText = "The authors name is too long"
+        } else if (form.title.value.length >= 100) {
+            error.innerText = "The books name is too long"
+        } else {
+            error.innerText = "The amount of pages is too long"
+        }
         return false
     } else if (isNaN(parseInt(form.bookLength.value)) == true) {
+        error.innerText = "The length is not a number"
         return false
     }
     return true
@@ -95,9 +105,9 @@ function addBookCard() {
         totalPages += parseInt(myLibrary[i].length)
 
         barPages.innerText = `${totalPages}`
-        title.innerText = `Title: ${myLibrary[i].title}`
-        author.innerText = `Author: ${myLibrary[i].author}`
-        length.innerText = `Length: ${myLibrary[i].length}`
+        title.innerText = `Title: \n ${myLibrary[i].title}`
+        author.innerText = `Author: \n ${myLibrary[i].author}`
+        length.innerText = `Length: \n ${myLibrary[i].length}`
         delBtn.innerText = "Delete"
         
         readSelect.classList.add("readbtns")

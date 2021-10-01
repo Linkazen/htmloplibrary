@@ -28,9 +28,9 @@ html, body {
 }
 
 .items {
-    flex: 1 1;
+    flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: center; 
 }
 
 .addbook {
@@ -50,7 +50,7 @@ html, body {
 }
 
 .corneritems {
-    margin: auto 20px auto 20px;
+    margin: auto 40px auto 40px;
 }
 
 .gitimg {
@@ -69,36 +69,67 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: auto;
-    flex-direction: column;
     background-color: rgb(255, 192, 203);
     background-color: rgba(255, 192, 203, 0.8);
 }
 
-.prompt {
+.textbox {
+    margin-bottom: 20px;
+}
+
+.booksarea {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    margin-bottom: calc(24px + 2em);
+}
+
+.book{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    min-width: 250px;
+    border: 2px solid black;
+    border-radius: 5%;
+    margin: 20px 80px 20px 80px;
+    padding: 20px 20px 20px 20px;
+    word-wrap: break-word;
+}
+
+
+
+#promptForm {
     display: flex;
     margin: auto;
     padding: 20px;
     background-color: pink;
     border: 1px solid #888;
+    border-radius: 5%;
     flex-direction: column;
-    width: 30%;
-    height: 60%;
+    width: 216px;
+    height: 324px;
+}
+
+#error {
+    text-align: center;
 }
 
 #confirmBtn {
     width: 80px;
     margin-bottom: 10px;
+    margin-top: 10px;
+    align-self: center;
 }
 
 #cancelBtn {
     width: 80px;
+    align-self: center;
 }
 
-.bookCards {
-
+#topLeft {
+    justify-content: left;
 }
 
-.textbox {
-    width: 200px;
-    margin-bottom: 20px;
+#topRight {
+    justify-content: right;
 }

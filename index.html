@@ -8,12 +8,11 @@
 </head>
 <body>
     <div class="promptArea">
-        <div class="prompt">
             <form action="" id="promptForm">
-                <label for="author">Author:</label>
-                <input type="text" id="author" class="textbox" name="author">
                 <label for="title">Title:</label>
                 <input type="text" id="title" class="textbox" name="title">
+                <label for="author">Author:</label>
+                <input type="text" id="author" class="textbox" name="author">
                 <label for="bookLength">Length of Book:</label>
                 <input type="text" id="bookLength" class="textbox" name="bookLength">
                 <select name="read" id="">
@@ -24,14 +23,14 @@
                 </select>
                 <button type="button" id="confirmBtn">Confirm</button>
                 <button type="button" id="cancelBtn">Cancel</button>
+                <div id="error"></div>
             </form>        
-        </div>
     </div>
 
     <div class="topbar">
-        <h2 id="topLeft" class="corneritems items">Library</h2>
-        <button class="addbook">Add Book</button>
-        <a href="https://github.com/Linkazen" id="topRight" class="corneritems items"><img class="gitimg" src="https://avatars.githubusercontent.com/u/82543388?v=4" alt=""></a>
+        <div id="topLeft" class="corneritems items"><h2>Library</h2></div>
+        <div class="items"><button class="addbook">Add Book</button></div>
+        <div id="topRight" class="corneritems items"><a href="https://github.com/Linkazen"><img class="gitimg" src="https://avatars.githubusercontent.com/u/82543388?v=4" alt=""></a></div> 
     </div>
 
     <div class="booksarea">
