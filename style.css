@@ -91,6 +91,7 @@ html, body {
     min-width: 250px;
     border: 2px solid black;
     border-radius: 5%;
+    background-color: whitesmoke;
     margin: 20px 80px 20px 80px;
     padding: 20px 20px 20px 20px;
     word-wrap: break-word;
